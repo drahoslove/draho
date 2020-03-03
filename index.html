@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8" />
+<title>Drahoslav Bednář</title>
+<meta name="viewport" content="width=device-width" />
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+<meta name="keywords" content="Drahoslove" />
+<style>
+@font-face {
+  font-family: "emoji-symbols";
+  src:
+    url("https://hive.draho.cz/font/Symbola.woff") format("woff"),
+    url("https://hive.draho.cz/font/Symbola.ttf") format("truetype");
+}
+body {
+	background: #00ADD8;
+	height: 100vh;
+	margin: 0;
+	font-family: monospace;
+	font-size: 150%;
+	color: #fffa;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+body>* {
+	width: 100%;
+	text-align: center;
+}
+h1 {
+	margin-bottom: 3em;
+}
+span:first-child {
+	color: #fff;
+}
+span:last-child {
+	color: transparent;
+	border-left: 2px solid;
+	transition: 0.5s all ease-out;
+	font-style: italic;
+	font-weight: 300;
+}
+span:last-child.v {
+	color: inherit;
+}
+footer a {
+	font-size: 150%;
+	color: inherit;
+	text-decoration: none;
+	opacity: .8;
+}
+footer a:hover {
+	opacity: 1;
+}
+#shower {
+	font-size: 30pt;
+	cursor: pointer;
+	margin-top: 1.5em;
+	padding: 0.5em;
+	display: inline-block;
+	transform: rotate(0deg);
+	transition: 0.25s all ease-out;
+	width: 1em;
+	height: 1em;
+	opacity: .8;
+	font-family: 'emoji-symbols';
+}
+#shower.h {
+	opacity: 0;
+}
+#shower.x {
+	transform: rotate(360deg);
+}
+#shower.notr {
+	transition: 0s all ease-out;
+}
+
+#shower:hover {
+	opacity: 1;
+}
+#shower > u {
+	text-decoration: none;
+    background: white;
+    border-radius: 50%;
+    display: inline-block;
+    width: .666em;
+    height: 1em;
+    color: #56aed8;
+    line-height: 40%;
+    transform: scaleX(1.5);
+}
+#refs > ul  {
+	list-style: none;
+	padding: 0;
+	overflow-y: hidden;
+	height: 0;
+	margin-top: 0;
+	transition: 0.5s all ease-out;
+}
+#refs.v > ul {
+	height: 150px;
+	margin-top: 50px;
+}
+#refs.v #shower {
+	transform: rotate(180deg);
+	margin-top: .5em;
+}
+li > a {
+	color: #fff;
+	opacity: 1;
+	text-decoration: none;
+}
+li > a:hover {
+	opacity: 0.8;
+	text-decoration: underline;
+}
+li > i {
+	color: #fff;
+	opacity: 0.5;
+	font-family: 'emoji-symbols';
+	font-style: normal;
+}
+i.m {
+	transform: rotateY(180deg);
+	display: inline-block;
+}
+</style>
+<div>I am</div>
+<h1>> <span></span><span>Drahoslav</span> <</h1>
+<footer>
+	<a href="https://github.com/drahoslove" target="_blank" rel="me" title="GitHub">
+		<i class="fab fa-fw fa-github"></i>
+	</a>
+	<a href="https://www.linkedin.com/in/drahoslavbednar" target="_blank" rel="me" title="LinkedIn">
+		<i class="fab fa-fw fa-linkedin-in"></i>
+	</a>
+	<a href="mailto:drahoslav@yo2.cz" target="_blank" rel="me" title="Mail me">
+		<i class="far fa-fw fa-envelope"></i>
+	</a>
+</footer>
+<div id="refs">
+	<a id="shower" class="h">
+		<u>⌄</u>
+	</a>
+	<ul>
+		<li>
+			<i class="m">🐝 🎮</i>
+			<a target="_blank" href="https://hmyz.it">Hmyz.it</a>
+			<i>🐜 🎲</i>
+		</li>
+		<li>
+			<i class="m">📷 ▪️▫️</i>
+			<a target="_blank" href="http://monochroman.draho.cz/">Monochroman</a>
+			<i>📷 ▫️▪️</i>
+		</li>
+		<li>
+			<i class="m">🖉 🎨</i>
+			<a target="_blank" href="https://teamdraw.yo2.cz">Teamdraw</a>
+			<i>🖋 🎨</i>
+		</li>
+		<li>
+			<i class="m">🦠 ▫️▪️</i>
+			<a target="_blank" href="http://apps.yo2.cz/GameOfLife/">Games of Life</a>
+			<i>🦠 ▫️▪️</i>
+		</li>
+	</ul>
+</div>
+<script>
+const s = document.querySelector("#shower")
+const [l, r] = document.querySelectorAll("span")
+function f() {
+	const t = r.innerText.split("")
+	if (t.length > 4) {
+		l.innerText += t.shift()
+		r.innerText = t.join("")
+		setTimeout(f, 125)
+	} else {
+		r.classList.add('v')
+		setTimeout(() => {
+			s.classList.remove('h')
+		}, 500)
+	}
+}
+setTimeout(f, 500)
+s.onclick = () => {
+	const refs = document.querySelector("#refs")
+	if(!refs.classList.contains('v')) {
+		refs.classList.add('v')		
+		setTimeout(() => {
+			s.classList.add('x')
+		}, 250)
+	} else {
+		refs.classList.remove('v')
+		setTimeout(() => {
+			s.classList.add('notr')
+			s.classList.remove('x')
+			requestAnimationFrame(() => {
+				s.classList.remove('notr')
+			})
+		}, 250)
+	}
+}
+</script>
+</html>
