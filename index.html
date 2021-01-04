@@ -55,59 +55,16 @@ footer a {
 footer a:hover {
 	opacity: 1;
 }
-#shower {
-	font-size: 30pt;
-	cursor: pointer;
-	margin-top: 1.5em;
-	padding: 0.5em;
-	display: inline-block;
-	transform: rotate(0deg);
-	transition: 0.25s all ease-out;
-	width: 1em;
-	height: 1em;
-	opacity: .8;
-	font-family: 'emoji-symbols';
-}
-#shower.h {
-	opacity: 0;
-}
-#shower.x {
-	transform: rotate(360deg);
-}
-#shower.notr {
-	transition: 0s all ease-out;
-}
 
-#shower:hover {
-	opacity: 1;
-}
-#shower > u {
-    text-decoration: none;
-    background: white;
-    border-radius: 50%;
-    display: inline-block;
-    width: .666em;
-    height: 1em;
-    color: #56aed8;
-    line-height: 40%;
-    transform: scaleX(1.5);
-}
 #refs > ul  {
 	list-style: none;
 	padding: 0;
 	overflow-y: hidden;
-	height: 0;
-	margin-top: 0;
 	transition: 0.5s all ease-out;
-}
-#refs.v > ul {
 	height: 160px;
 	margin-top: 50px;
 }
-#refs.v #shower {
-	transform: rotate(180deg);
-	margin-top: .5em;
-}
+
 li > a {
 	color: #fff;
 	opacity: 1;
@@ -141,9 +98,6 @@ i.m {
 	</a>
 </footer>
 <div id="refs">
-	<a id="shower" class="h">
-		<u>⌄</u>
-	</a>
 	<ul>
 		<li>
 			<i class="m">🎹</i>
@@ -173,7 +127,6 @@ i.m {
 	</ul>
 </div>
 <script>
-const s = document.querySelector("#shower")
 const [l, r] = document.querySelectorAll("span")
 function f() {
 	const t = r.innerText.split("")
@@ -189,23 +142,5 @@ function f() {
 	}
 }
 setTimeout(f, 500)
-s.onclick = () => {
-	const refs = document.querySelector("#refs")
-	if(!refs.classList.contains('v')) {
-		refs.classList.add('v')		
-		setTimeout(() => {
-			s.classList.add('x')
-		}, 250)
-	} else {
-		refs.classList.remove('v')
-		setTimeout(() => {
-			s.classList.add('notr')
-			s.classList.remove('x')
-			requestAnimationFrame(() => {
-				s.classList.remove('notr')
-			})
-		}, 250)
-	}
-}
 </script>
 </html>
